@@ -3,4 +3,5 @@
   <Project Path="CoursPOO.demo01namespace/CoursPOO.demo01namespace.csproj" />
   <Project Path="CoursPOO.demo01_bis/CoursPOO.demo01_bis.csproj" />
   <Project Path="CoursPOO.demo02notionclass/CoursPOO.demo02notionclass.csproj" />
+  <Project Path="CoursPOO.demo03indexeur/CoursPOO.demo03indexeur.csproj" Id="85c5d065-d550-43f1-ba35-abd83934ef06" />
 </Solution>
