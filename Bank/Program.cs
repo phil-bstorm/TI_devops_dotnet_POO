@@ -32,6 +32,16 @@ namespace Bank
             Console.WriteLine($"Compte de Phil: {cPhil.Solde}");
             cPhil.Retrait(5_000);
             Console.WriteLine($"Compte de Phil: {cPhil.Solde}");
+
+            // BANQUE et Indexeur
+            Banque belfius = new Banque("Belfius");
+            Banque bnp = new Banque("BNP");
+
+            belfius.Ajouter(cPhil);
+            bnp.Ajouter(cMichelle);
+            belfius.Ajouter(cJohn);
+
+            belfius.Supprimer("BE22");
         }
     }
 }
