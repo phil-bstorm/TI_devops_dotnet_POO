@@ -5,4 +5,5 @@
   <Project Path="CoursPOO.demo02notionclass/CoursPOO.demo02notionclass.csproj" />
   <Project Path="CoursPOO.demo03indexeur/CoursPOO.demo03indexeur.csproj" Id="85c5d065-d550-43f1-ba35-abd83934ef06" />
   <Project Path="CoursPOO.demo04SurchargeOperateur/CoursPOO.demo04SurchargeOperateur.csproj" Id="4ecf3226-1b2b-4d28-9028-61c5164bf21a" />
+  <Project Path="CoursPOO.demo05Heritage/CoursPOO.demo05Heritage.csproj" Id="b3936780-554c-4337-9687-dc9f2b7674cf" />
 </Solution>
