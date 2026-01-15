@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Text;
 
 namespace Bank.Models
@@ -10,16 +11,20 @@ namespace Bank.Models
         public double Solde { get; private set; }
 
         private double _LigneDeCredit;
-        public double LigneDeCredit {
-            get {  
-                return _LigneDeCredit; 
-            } 
-            set {
+        public double LigneDeCredit
+        {
+            get
+            {
+                return _LigneDeCredit;
+            }
+            set
+            {
                 if (value < 0)
                 {
                     _LigneDeCredit = 0;
                     // TODO mettre une exception
-                }else
+                }
+                else
                 {
                     _LigneDeCredit = value;
                 }
@@ -36,8 +41,9 @@ namespace Bank.Models
             Titulaire = titulaire;
         }
 
-        public void Depot(double montant) {
-            if(montant > 0)
+        public void Depot(double montant)
+        {
+            if (montant > 0)
             {
                 Solde += montant;
             }
@@ -49,13 +55,34 @@ namespace Bank.Models
 
         public void Retrait(double montant)
         {
-            if(montant > 0 && Solde-montant >= -LigneDeCredit)
+            if (montant > 0 && Solde - montant >= -LigneDeCredit)
             {
                 Solde -= montant;
             }
             else
             {
                 // TODO exception
+            }
+        }
+
+        // Surcharge d'operateur "+"
+        public static double operator +(Courant left, Courant right)
+        {
+            if (left.Solde >= 0 && right.Solde >= 0)
+            {
+                return left.Solde + right.Solde;
+            }
+            else if (left.Solde >= 0)
+            {
+                return left.Solde;
+            }
+            else if (right.Solde >= 0)
+            {
+                return right.Solde;
+            }
+            else
+            {
+                return 0;
             }
         }
     }

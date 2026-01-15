@@ -15,6 +15,8 @@ namespace Bank
             // Instance des Courant
             Courant cMichelle = new Courant("a12345", 10_000, 1500, michelle);
             Courant cPhil = new("BE11", 100, 0, phil);
+            Courant cPhil2 = new("BE12", 200, 0, phil);
+            Courant cPhil3 = new("BE13", 150, 0, phil);
 
             // Instance d'un Courant avec Person en même temps
             Courant cJohn = new Courant("BE22",
@@ -36,12 +38,21 @@ namespace Bank
             // BANQUE et Indexeur
             Banque belfius = new Banque("Belfius");
             Banque bnp = new Banque("BNP");
-
+            
             belfius.Ajouter(cPhil);
+            belfius.Ajouter(cPhil2);
+            bnp.Ajouter(cPhil3);
             bnp.Ajouter(cMichelle);
             belfius.Ajouter(cJohn);
 
             belfius.Supprimer("BE22");
+
+            double sommeDePhilBelfius = belfius.AvoirDesComptes(phil);
+            Console.WriteLine($"Phil a {sommeDePhilBelfius} chez Belfius.");
+            double sommeDePhilBNP = bnp.AvoirDesComptes(phil);
+            double total = sommeDePhilBelfius + sommeDePhilBNP;
+
+           
         }
     }
 }
