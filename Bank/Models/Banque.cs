@@ -54,10 +54,10 @@ namespace Bank.Models
 
         public void Supprimer(string numero)
         {
-            Console.WriteLine(Nom);
-            // Le mot clé "this" fait référence à l'instance dans laquelle on est
-            Console.WriteLine(this.Nom);
-            Console.WriteLine(this._Courants);
+            // Console.WriteLine(Nom);
+            // // Le mot clé "this" fait référence à l'instance dans laquelle on est
+            // Console.WriteLine(this.Nom);
+            // Console.WriteLine(this._Courants);
             Courant? c = this[numero];
 
             if (c is not null)

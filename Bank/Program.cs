@@ -51,8 +51,6 @@ namespace Bank
             Console.WriteLine($"Phil a {sommeDePhilBelfius} chez Belfius.");
             double sommeDePhilBNP = bnp.AvoirDesComptes(phil);
             double total = sommeDePhilBelfius + sommeDePhilBNP;
-
-           
         }
     }
 }

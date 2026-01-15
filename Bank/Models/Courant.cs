@@ -5,11 +5,8 @@ using System.Text;
 
 namespace Bank.Models
 {
-    internal class Courant
+    internal class Courant : Compte
     {
-        public string Numero { get; set; }
-        public double Solde { get; private set; }
-
         private double _LigneDeCredit;
         public double LigneDeCredit
         {
@@ -31,33 +28,16 @@ namespace Bank.Models
             }
         }
 
-        public Person Titulaire { get; set; }
-
-        public Courant(string numero, double solde, double ligneDeCredit, Person titulaire)
+        public Courant(string numero, double solde, double ligneDeCredit, Person titulaire) : base(numero, solde, titulaire)
         {
-            Numero = numero;
-            Solde = solde;
             LigneDeCredit = ligneDeCredit;
-            Titulaire = titulaire;
-        }
-
-        public void Depot(double montant)
-        {
-            if (montant > 0)
-            {
-                Solde += montant;
-            }
-            else
-            {
-                // TODO exception
-            }
         }
 
         public void Retrait(double montant)
         {
             if (montant > 0 && Solde - montant >= -LigneDeCredit)
             {
-                Solde -= montant;
+                base.Retrait(montant);
             }
             else
             {
@@ -65,25 +45,6 @@ namespace Bank.Models
             }
         }
 
-        // Surcharge d'operateur "+"
-        public static double operator +(Courant left, Courant right)
-        {
-            if (left.Solde >= 0 && right.Solde >= 0)
-            {
-                return left.Solde + right.Solde;
-            }
-            else if (left.Solde >= 0)
-            {
-                return left.Solde;
-            }
-            else if (right.Solde >= 0)
-            {
-                return right.Solde;
-            }
-            else
-            {
-                return 0;
-            }
-        }
+
     }
 }
