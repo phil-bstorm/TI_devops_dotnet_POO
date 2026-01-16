@@ -14,7 +14,7 @@ namespace Bank.Models
         {
             get
             {
-                Courant? trouver = null;
+                Compte? trouver = null;
                 for (int i = 0; i < _Comptes.Count() && trouver is null; i++)
                 {
                     if (numero == _Comptes[i].Numero)
