@@ -32,5 +32,30 @@
 
             return entier;
        }
+
+        public static DateOnly ReadDateOnly(string prompt = "Entrez votre entier: ", bool reessayer = true)
+        {
+            DateOnly date;
+            bool success = false;
+            do
+            {
+                Console.Write(prompt);
+                string input = Console.ReadLine();
+
+                success = DateOnly.TryParse(input, out date);
+
+                if (!success)
+                {
+                    Console.WriteLine("Entrée invalide.");
+                }
+            } while (reessayer && !success);
+
+            if (!success)
+            {
+                throw new Exception("Valeur invalide.");
+            }
+
+            return date;
+        }
     }
 }
