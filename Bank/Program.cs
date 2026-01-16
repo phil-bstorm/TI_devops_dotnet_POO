@@ -56,7 +56,12 @@ namespace Bank
             belfius.Ajouter(new Epargne("E01", 10, phil));
 
             // Complémentaire: Créer une méthode qui
-            // affiche phil a X compte épargne et X compte courant
+            // affiche Haerens a 1 compte épargne et 2 compte courant
+            // BONUS: faites en sorte que la méthode retourne les 2 valeurs
+            // et que ça soit le program.cs qui fait le Console.WriteLine
+            // Indice bonus: mot clé utilisaer avec "int.TryParse" -> out
+            belfius.NombreDeCompteDe("Haerens", out int courants, out int epargnes);
+            Console.WriteLine($"Courants {courants} | Epargnes {epargnes}");
 
         }
     }

@@ -95,5 +95,30 @@ namespace Bank.Models
             }
             return courantSomme.Solde;
         }
+
+
+        public void NombreDeCompteDe(string nom, out int nbrCourants, out int nbrEpargnes)
+        {
+            // Compteurs
+            nbrCourants = 0;
+            nbrEpargnes = 0;
+
+            // Boucle sur les comptes
+            foreach (Compte compte in _Comptes)
+            {
+                if(compte.Titulaire.Nom == nom)
+                {
+                    if (compte is Courant)
+                    {
+                        nbrCourants++;
+                    }
+                    else
+                    {
+                        nbrEpargnes++;
+                    }
+                }
+            }
+
+        }
     }
 }
