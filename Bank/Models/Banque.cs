@@ -6,20 +6,20 @@ namespace Bank.Models
 {
     internal class Banque
     {
-        private List<Courant> _Courants = [];
+        private List<Compte> _Comptes = [];
 
         public string Nom { get; set; }
 
-        public Courant? this[string numero]
+        public Compte? this[string numero]
         {
             get
             {
                 Courant? trouver = null;
-                for (int i = 0; i < _Courants.Count() && trouver is null; i++)
+                for (int i = 0; i < _Comptes.Count() && trouver is null; i++)
                 {
-                    if (numero == _Courants[i].Numero)
+                    if (numero == _Comptes[i].Numero)
                     {
-                        trouver = _Courants[i];
+                        trouver = _Comptes[i];
                     }
                 }
 
@@ -32,20 +32,20 @@ namespace Bank.Models
             Nom = nom;
         }
 
-        public void Ajouter(Courant c)
+        public void Ajouter(Compte c)
         {
-            _Courants.Add(c);
+            _Comptes.Add(c);
         }
 
         // FAIS LA MEME CHOSE QUE L'INDEXEUR
-        public Courant? GetCourantByNumero(string numero)
+        public Compte? GetCourantByNumero(string numero)
         {
-            Courant? trouver = null;
-            for (int i = 0; i < _Courants.Count() && trouver is null; i++)
+            Compte? trouver = null;
+            for (int i = 0; i < _Comptes.Count() && trouver is null; i++)
             {
-                if (numero == _Courants[i].Numero)
+                if (numero == _Comptes[i].Numero)
                 {
-                    trouver = _Courants[i];
+                    trouver = _Comptes[i];
                 }
             }
 
@@ -58,18 +58,18 @@ namespace Bank.Models
             // // Le mot clé "this" fait référence à l'instance dans laquelle on est
             // Console.WriteLine(this.Nom);
             // Console.WriteLine(this._Courants);
-            Courant? c = this[numero];
+            Compte? c = this[numero];
 
             if (c is not null)
             {
-                _Courants.Remove(c);
+                _Comptes.Remove(c);
             }
         }
 
         public double AvoirDesComptes(Person titulaire)
         {
             double somme = 0;
-            foreach (Courant courant in _Courants)
+            foreach (Compte courant in _Comptes)
             {
                 if (titulaire == courant.Titulaire)
                 {
@@ -82,15 +82,15 @@ namespace Bank.Models
         public double AvoirDesComptesVersionCorrectif(Person titulaire)
         {
             // Créer un "faux" compte qui va nous servir à faire la somme
-            Courant courantSomme = new Courant("000", 0, 0, new("", "", new()));
+            Compte courantSomme = new Compte("000", 0, new("", "", new()));
 
-            foreach (Courant courant in _Courants)
+            foreach (Compte courant in _Comptes)
             {
                 if (titulaire == courant.Titulaire)
                 {
                     double solde = courantSomme + courant;
                     // Courant.Solde est privé, donc on est obligé de re-instancier un objet Courant
-                    courantSomme = new Courant("000", solde, 0, new("", "", new()));
+                    courantSomme = new Compte("000", solde, new("", "", new()));
                 }
             }
             return courantSomme.Solde;

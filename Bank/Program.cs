@@ -51,6 +51,13 @@ namespace Bank
             Console.WriteLine($"Phil a {sommeDePhilBelfius} chez Belfius.");
             double sommeDePhilBNP = bnp.AvoirDesComptes(phil);
             double total = sommeDePhilBelfius + sommeDePhilBNP;
+
+            // Ajouter des compte épargnes dans la banque
+            belfius.Ajouter(new Epargne("E01", 10, phil));
+
+            // Complémentaire: Créer une méthode qui
+            // affiche phil a X compte épargne et X compte courant
+
         }
     }
 }
