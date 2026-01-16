@@ -59,10 +59,16 @@ namespace Bank
             // affiche Haerens a 1 compte épargne et 2 compte courant
             // BONUS: faites en sorte que la méthode retourne les 2 valeurs
             // et que ça soit le program.cs qui fait le Console.WriteLine
-            // Indice bonus: mot clé utilisaer avec "int.TryParse" -> out
+            // Indice bonus: mot clé utiliser avec "int.TryParse" -> out
             belfius.NombreDeCompteDe("Haerens", out int courants, out int epargnes);
             Console.WriteLine($"Courants {courants} | Epargnes {epargnes}");
 
+            //Compte cE01 = belfius["E01"];
+            //cE01.Solde
+            Console.WriteLine($"Montant avant interet: {belfius["E01"].Solde}");
+            belfius.AppliquerInteretAuxComtpes();
+            bnp.AppliquerInteretAuxComtpes();
+            Console.WriteLine($"Montant avant interet: {belfius.GetCompteByNumero("E01").Solde}");
         }
     }
 }

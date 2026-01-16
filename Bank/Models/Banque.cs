@@ -38,7 +38,7 @@ namespace Bank.Models
         }
 
         // FAIS LA MEME CHOSE QUE L'INDEXEUR
-        public Compte? GetCourantByNumero(string numero)
+        public Compte? GetCompteByNumero(string numero)
         {
             Compte? trouver = null;
             for (int i = 0; i < _Comptes.Count() && trouver is null; i++)
@@ -79,22 +79,22 @@ namespace Bank.Models
             return somme;
         }
 
-        public double AvoirDesComptesVersionCorrectif(Person titulaire)
-        {
-            // Créer un "faux" compte qui va nous servir à faire la somme
-            Compte courantSomme = new Compte("000", 0, new("", "", new()));
+        //public double AvoirDesComptesVersionCorrectif(Person titulaire)
+        //{
+        //    // Créer un "faux" compte qui va nous servir à faire la somme
+        //    Compte courantSomme = new Compte("000", 0, new("", "", new()));
 
-            foreach (Compte courant in _Comptes)
-            {
-                if (titulaire == courant.Titulaire)
-                {
-                    double solde = courantSomme + courant;
-                    // Courant.Solde est privé, donc on est obligé de re-instancier un objet Courant
-                    courantSomme = new Compte("000", solde, new("", "", new()));
-                }
-            }
-            return courantSomme.Solde;
-        }
+        //    foreach (Compte courant in _Comptes)
+        //    {
+        //        if (titulaire == courant.Titulaire)
+        //        {
+        //            double solde = courantSomme + courant;
+        //            // Courant.Solde est privé, donc on est obligé de re-instancier un objet Courant
+        //            courantSomme = new Compte("000", solde, new("", "", new()));
+        //        }
+        //    }
+        //    return courantSomme.Solde;
+        //}
 
 
         public void NombreDeCompteDe(string nom, out int nbrCourants, out int nbrEpargnes)
@@ -119,6 +119,14 @@ namespace Bank.Models
                 }
             }
 
+        }
+    
+        public void AppliquerInteretAuxComtpes()
+        {
+            foreach (Compte c in _Comptes)
+            {
+                c.AppliquerInteret();
+            }
         }
     }
 }

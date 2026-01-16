@@ -18,15 +18,22 @@ namespace Bank.Models
             {
                 // TODO exception (error)
                 Console.WriteLine("Veuillez entrer un montant positif.");
-            }else if (Solde - montant >= 0)
+            }
+            else if (Solde - montant >= 0)
             {
                 //Solde = Solde - montant; Solde est private donc je ne peux pas y accèder...
                 base.Retrait(montant);
                 DateDernierRetrait = DateTime.Now;
-            }else
+            }
+            else
             {
                 Console.WriteLine("Solde insufisant");
             }
+        }
+
+        protected override double CalculerInteret()
+        {
+            return Solde * 0.045;
         }
     }
 }

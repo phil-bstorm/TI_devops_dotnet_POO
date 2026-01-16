@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Bank.Models
 {
-    internal class Compte
+    internal abstract class Compte
     {
         public string Numero { get; set; }
         public double Solde { get; private set; }
@@ -59,6 +59,13 @@ namespace Bank.Models
             {
                 return 0;
             }
+        }
+
+        protected abstract double CalculerInteret();
+
+        public void AppliquerInteret()
+        {
+            Solde = Solde + CalculerInteret();
         }
     }
 }
