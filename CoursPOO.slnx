@@ -10,4 +10,5 @@
   <Project Path="CoursPOO.Demo06Polymorphisme/CoursPOO.Demo06Polymorphisme.csproj" Id="f26390c1-9da4-4f6f-99fd-d0eee07de728" />
   <Project Path="CoursPOO.Demo07Abstract/CoursPOO.Demo07Abstract.csproj" Id="c9e38ed1-64e1-4ec0-b9a3-122e080c018f" />
   <Project Path="CoursPOO.Demo08Static/CoursPOO.Demo08Static.csproj" Id="7543ac0f-383e-425d-b5af-597feefb0dc6" />
+  <Project Path="CoursPOO.Demo09Interface/CoursPOO.Demo09Interface.csproj" Id="169271b2-9ab9-4cab-80d4-564f49f66358" />
 </Solution>
