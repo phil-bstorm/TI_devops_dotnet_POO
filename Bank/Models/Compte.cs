@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Bank.Models.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Bank.Models
 {
-    internal abstract class Compte
+    internal abstract class Compte: IBanker
     {
         public string Numero { get; set; }
         public double Solde { get; private set; }
@@ -67,5 +68,7 @@ namespace Bank.Models
         {
             Solde = Solde + CalculerInteret();
         }
+
+        
     }
 }
