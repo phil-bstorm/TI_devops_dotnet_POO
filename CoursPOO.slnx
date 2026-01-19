@@ -11,4 +11,5 @@
   <Project Path="CoursPOO.Demo07Abstract/CoursPOO.Demo07Abstract.csproj" Id="c9e38ed1-64e1-4ec0-b9a3-122e080c018f" />
   <Project Path="CoursPOO.Demo08Static/CoursPOO.Demo08Static.csproj" Id="7543ac0f-383e-425d-b5af-597feefb0dc6" />
   <Project Path="CoursPOO.Demo09Interface/CoursPOO.Demo09Interface.csproj" Id="169271b2-9ab9-4cab-80d4-564f49f66358" />
+  <Project Path="CoursPOO.Demo10Constructeur/CoursPOO.Demo10Constructeur.csproj" Id="498f1a7a-f714-4078-a06a-f3871fab0cdb" />
 </Solution>
