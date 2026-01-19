@@ -14,9 +14,9 @@ namespace Bank
 
             // Instance des Courant
             Courant cMichelle = new Courant("a12345", 10_000, 1500, michelle);
-            Courant cPhil = new("BE11", 100, 0, phil);
-            Courant cPhil2 = new("BE12", 200, 0, phil);
-            Courant cPhil3 = new("BE13", 150, 0, phil);
+            Courant cPhil = new("BE11", 100, 1, phil);
+            Courant cPhil2 = new("BE12", 200, 1, phil);
+            Courant cPhil3 = new("BE13", 150, 1, phil);
 
             // Instance d'un Courant avec Person en même temps
             Courant cJohn = new Courant("BE22",
@@ -26,14 +26,22 @@ namespace Bank
              );
 
             // UTILISATION DES METHODES
-            cMichelle.Depot(-10);
-            Console.WriteLine($"Compte de Michelle: {cMichelle.Solde}");
-            cMichelle.Depot(100);
-            Console.WriteLine($"Compte de Michelle: {cMichelle.Solde}");
-            cPhil.Retrait(10);
-            Console.WriteLine($"Compte de Phil: {cPhil.Solde}");
-            cPhil.Retrait(5_000);
-            Console.WriteLine($"Compte de Phil: {cPhil.Solde}");
+            try
+            {
+                cMichelle.Depot(-10);
+                Console.WriteLine($"Compte de Michelle: {cMichelle.Solde}");
+                cMichelle.Depot(100);
+                Console.WriteLine($"Compte de Michelle: {cMichelle.Solde}");
+                cPhil.Retrait(10);
+                Console.WriteLine($"Compte de Phil: {cPhil.Solde}");
+                cPhil.Retrait(5_000);
+                Console.WriteLine($"Compte de Phil: {cPhil.Solde}");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Probleme dans la transaction.");
+                Console.WriteLine(e.Message);
+            }   
 
             // BANQUE et Indexeur
             Banque belfius = new Banque("Belfius");

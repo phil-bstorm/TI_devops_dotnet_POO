@@ -12,6 +12,11 @@ namespace Bank.Models
         {
         }
 
+        public Epargne(string numero, Person titulaire): base(numero, titulaire)
+        {
+
+        }
+
         public override void Retrait(double montant)
         {
             if (montant <= 0)

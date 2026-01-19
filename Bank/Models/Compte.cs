@@ -7,9 +7,9 @@ namespace Bank.Models
 {
     internal abstract class Compte: IBanker
     {
-        public string Numero { get; set; }
+        public string Numero { get; private set; }
         public double Solde { get; private set; }
-        public Person Titulaire { get; set; }
+        public Person Titulaire { get; private set; }
 
         public Compte(string numero, double solde, Person titulaire)
         {
@@ -18,12 +18,16 @@ namespace Bank.Models
             Titulaire = titulaire;
         }
 
+        public Compte(string numero, Person titulaire) : this(numero, 0, titulaire)
+        {
+
+        }
+
         public virtual void Retrait(double montant)
         {
             if (montant < 0)
             {
-                // TODO exception (error)
-                Console.WriteLine("Veuillez entrer un montant positif.");
+                throw new ArgumentOutOfRangeException("Le montant doit être supérieur à zéro.");
             }
 
             Solde = Solde - montant;
@@ -37,7 +41,7 @@ namespace Bank.Models
             }
             else
             {
-                // TODO exception
+                throw new ArgumentOutOfRangeException("Le montant doit être supérieur à zéro.");
             }
         }
 

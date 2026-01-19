@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bank.CustomExceptions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Text;
@@ -16,10 +17,9 @@ namespace Bank.Models
             }
             set
             {
-                if (value < 0)
+                if (value <= 0)
                 {
-                    _LigneDeCredit = 0;
-                    // TODO mettre une exception
+                    throw new InvalidOperationException("La ligne de crédit doit être supérieur ou égale à zéro");
                 }
                 else
                 {
@@ -33,18 +33,31 @@ namespace Bank.Models
             LigneDeCredit = ligneDeCredit;
         }
 
-        public void Retrait(double montant)
+        public Courant(string numero, Person titulaire)
+            : this(numero, 0, 0, titulaire)
         {
-            if (montant > 0 && Solde - montant >= -LigneDeCredit)
+
+        }
+
+        public Courant(string numero, Person titulaire, double ligneDeCredit)
+            : this(numero, 0, ligneDeCredit, titulaire)
+        {
+
+        }
+
+        public override void Retrait(double montant)
+        {
+            if(montant < 0)
+            {
+                throw new ArgumentOutOfRangeException("Le montant doit être supérieur à zéro.");
+            } else if (Solde - montant <= -LigneDeCredit)
+            {
+                throw new SoldeInsuffisantException(Solde);
+            }else
             {
                 base.Retrait(montant);
             }
-            else
-            {
-                // TODO exception
-            }
         }
-
         protected override double CalculerInteret()
         {
             return (Solde > 0) ? (Solde * 0.03) : (Solde * 0.0975);
