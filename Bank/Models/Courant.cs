@@ -55,8 +55,18 @@ namespace Bank.Models
                 throw new SoldeInsuffisantException(Solde);
             }else
             {
+                bool ancienSoldePositif = Solde >= 0;
+
                 base.Retrait(montant);
-            }
+             
+                if (ancienSoldePositif && Solde < 0)
+                {
+                    // trigger event
+                    //PassageEnNegatifEvent(this); Ne fonctionne pas car event ne peut être utiliser que la class qui le déclare.
+                    //Solution: On passe par une méthode mise en place dans le parent qui appelera PassageEnNegatifEvent
+                    TriggerPassageEnNegatifEvent();
+                }
+            }            
         }
         protected override double CalculerInteret()
         {

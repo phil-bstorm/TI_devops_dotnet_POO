@@ -15,4 +15,5 @@
   <Project Path="CoursPOO.Demo11IDilsposable/CoursPOO.Demo11IDilsposable.csproj" Id="18ec3594-32ca-4ee7-85c1-99ed1d3894d1" />
   <Project Path="CoursPOO.Demo12Exception/CoursPOO.Demo12Exception.csproj" Id="f809f085-fa26-486f-b4b0-05bd2600f20f" />
   <Project Path="CoursPOO.Demo13Delegate/CoursPOO.Demo13Delegate.csproj" Id="841b1cb0-a265-4313-9ef2-4dacabe460f5" />
+  <Project Path="ExoCarwash/ExoCarwash.csproj" Id="f27089ad-cc8e-4035-b31e-6493c9099e9a" />
 </Solution>

@@ -35,6 +35,7 @@ namespace Bank.Models
         public void Ajouter(Compte c)
         {
             _Comptes.Add(c);
+            c.PassageEnNegatifEvent += PassageEnNegatifAction;
         }
 
         // FAIS LA MEME CHOSE QUE L'INDEXEUR
@@ -62,6 +63,7 @@ namespace Bank.Models
 
             if (c is not null)
             {
+                c.PassageEnNegatifEvent -= PassageEnNegatifAction;
                 _Comptes.Remove(c);
             }
         }
@@ -127,6 +129,11 @@ namespace Bank.Models
             {
                 c.AppliquerInteret();
             }
+        }
+    
+        public void PassageEnNegatifAction(Compte compte)
+        {
+            Console.WriteLine($"Le compte {compte.Numero} vient de passer en négatif.");
         }
     }
 }

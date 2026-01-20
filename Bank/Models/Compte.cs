@@ -5,11 +5,15 @@ using System.Text;
 
 namespace Bank.Models
 {
-    internal abstract class Compte: IBanker
+    delegate void PassageEnNegatifDelegate(Compte c);
+
+    internal abstract class Compte : IBanker
     {
         public string Numero { get; private set; }
         public double Solde { get; private set; }
         public Person Titulaire { get; private set; }
+
+        public event PassageEnNegatifDelegate PassageEnNegatifEvent;
 
         public Compte(string numero, double solde, Person titulaire)
         {
@@ -73,6 +77,10 @@ namespace Bank.Models
             Solde = Solde + CalculerInteret();
         }
 
-        
+        protected void TriggerPassageEnNegatifEvent()
+        {
+            if (PassageEnNegatifEvent is not null)
+                PassageEnNegatifEvent(this);
+        }
     }
 }
