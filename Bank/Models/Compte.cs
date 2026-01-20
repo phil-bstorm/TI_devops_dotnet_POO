@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Bank.Models
 {
-    delegate void PassageEnNegatifDelegate(Compte c);
+    //delegate void PassageEnNegatifDelegate(Compte c);
 
     internal abstract class Compte : IBanker
     {
@@ -13,7 +13,8 @@ namespace Bank.Models
         public double Solde { get; private set; }
         public Person Titulaire { get; private set; }
 
-        public event PassageEnNegatifDelegate PassageEnNegatifEvent;
+        //public event PassageEnNegatifDelegate PassageEnNegatifEvent;
+        public event Action<Compte> PassageEnNegatifEvent;
 
         public Compte(string numero, double solde, Person titulaire)
         {
@@ -79,8 +80,9 @@ namespace Bank.Models
 
         protected void TriggerPassageEnNegatifEvent()
         {
-            if (PassageEnNegatifEvent is not null)
-                PassageEnNegatifEvent(this);
+            //if (PassageEnNegatifEvent is not null)
+            //    PassageEnNegatifEvent(this);
+            PassageEnNegatifEvent?.Invoke(this);
         }
     }
 }
